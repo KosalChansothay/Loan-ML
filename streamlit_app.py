@@ -126,7 +126,7 @@ if st.button('Predict'):
     prediction_proba = model.predict_proba(df_scaled)
 
     st.subheader('Prediction')
-    st.write('Unfortunately, Your proposal has been approved' if prediction[0] == 1 else 'Your proposal has been rejected')
+    st.write('Congratulation, Your proposal has been approved' if prediction[0] == 1 else 'Unfortunately, Your proposal has been rejected')
 
     #st.subheader('Prediction Probability')
     #st.write(f'Probability of being approved is: {prediction_proba[0][1]:.2f}')
