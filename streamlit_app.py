@@ -60,7 +60,7 @@ def user_input_features():
     applicant_income = st.number_input('Applicant Income')
     coapplicant_income = st.number_input('Coapplicant Income')
     loan_amount = st.number_input('Loan Amount')
-    loan_amount_term = st.number_input('Loan Amount Term')
+    loan_amount_term = st.number_input('Loan Amount Term (Days)')
     credit_history = st.selectbox('Credit History', ('0', '1'))
     property_area = st.selectbox('Property Area', ('Urban', 'Semiurban', 'Rural'))
     
