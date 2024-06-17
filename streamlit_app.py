@@ -142,5 +142,5 @@ else:
 
         st.subheader('Prediction')
         st.write('Congratulations, Your proposal has been approved!' if prediction[0] == 1 else 'Unfortunately, your proposal has been rejected.')
-        st.subheader('Prediction Probability')
-        st.write(f'Probability of being approved is: {prediction_proba[0][1]:.2f}')
+        #st.subheader('Prediction Probability')
+        #st.write(f'Probability of being approved is: {prediction_proba[0][1]:.2f}')
