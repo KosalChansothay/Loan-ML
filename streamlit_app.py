@@ -80,13 +80,23 @@ def user_input_features():
 
 df = user_input_features()
 
-# Validate inputs
-if df['ApplicantIncome'].iloc[0] <= 0:
+# Validate inputs based on standard ratios
+applicant_income = df['ApplicantIncome'].iloc[0]
+coapplicant_income = df['CoapplicantIncome'].iloc[0]
+loan_amount = df['LoanAmount'].iloc[0]
+loan_amount_term = df['Loan_Amount_Term'].iloc[0]
+
+total_income = applicant_income + coapplicant_income
+dti_ratio = (loan_amount / total_income) * 100 if total_income > 0 else 0
+
+if applicant_income <= 0:
     st.error("Applicant Income must be greater than zero.")
-elif df['LoanAmount'].iloc[0] <= 0:
+elif loan_amount <= 0:
     st.error("Loan Amount must be greater than zero.")
-elif df['Loan_Amount_Term'].iloc[0] <= 0:
+elif loan_amount_term <= 0:
     st.error("Loan Amount Term must be greater than zero.")
+elif dti_ratio > 36:  # Assuming DTI ratio should not exceed 36%
+    st.error("Debt-to-Income (DTI) ratio should not exceed 36%.")
 else:
     # Preprocess user input
     df['LoanAmount'] = df['LoanAmount'].fillna(df['LoanAmount'].mean())
@@ -132,5 +142,5 @@ else:
 
         st.subheader('Prediction')
         st.write('Congratulations, Your proposal has been approved!' if prediction[0] == 1 else 'Unfortunately, your proposal has been rejected.')
-        #st.subheader('Prediction Probability')
-        #st.write(f'Probability of being approved is: {prediction_proba[0][1]:.2f}')
+        st.subheader('Prediction Probability')
+        st.write(f'Probability of being approved is: {prediction_proba[0][1]:.2f}')
