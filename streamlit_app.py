@@ -95,8 +95,8 @@ elif loan_amount <= 0:
     st.error("Loan Amount must be greater than zero.")
 elif loan_amount_term <= 0:
     st.error("Loan Amount Term must be greater than zero.")
-elif dti_ratio > 36:  # Assuming DTI ratio should not exceed 36%
-    st.error("Debt-to-Income (DTI) ratio should not exceed 36%.")
+elif dti_ratio > 50:  # Assuming DTI ratio should not exceed 50%
+    st.error("Debt-to-Income (DTI) ratio should not exceed 50%.")
 else:
     # Preprocess user input
     df['LoanAmount'] = df['LoanAmount'].fillna(df['LoanAmount'].mean())
